@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> -->
+    <script src="momentum.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination-Example</title>
+</head>
+<body>
+      <div class="box">
+        <h3>This Is Example Of jquery Pagination</h3>
+    <div class="page-content">
+        <div class="page-item">
+            <div class="details-box">
+                <h3>This Is page:1</h3>
+            </div>
+    </div>
+    </div>
+    <div class="page-content">
+        <div class="page-item">
+            <div class="details-box">
+                <h3>This Is page:2</h3>
+            </div>
+    </div>
+    </div>
+    <div class="page-content">
+        <div class="page-item">
+            <div class="details-box">
+                <h3>This Is page:3</h3>
+            </div>
+    </div>
+    </div>
+    <div class="page-content">
+        <div class="page-item">
+            <div class="details-box">
+                <h3>This Is page:4</h3>
+            </div>
+    </div>
+    </div>
+    <div class="page-content">
+        <div class="page-item">
+            <div class="details-box">
+                <h3>This Is page:5</h3>
+            </div>
+    </div>
+    </div>
+    <div class="page-content">
+        <div class="page-item">
+            <div class="details-box">
+                <h3>This Is page:6</h3>
+            </div>
+    </div>
+    </div>
+    <div id="pagination-container"></div>
+   </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js'></script>
+
+<script>
+    jQuery(document).ready(function () {
+        
+        var items = jQuery(".box .page-content .page-item");
+        var numItems = items.length;
+        var perPage = 1;
+    
+        items.slice(perPage).hide();
+    
+        jQuery('#pagination-container').pagination({
+            items: numItems,
+            itemsOnPage: perPage,
+            prevText:"<i class='ri-arrow-left-line'></i>",
+            nextText:"<i class='ri-arrow-right-line'></i>",
+            onPageClick: function (pageNumber) {
+                var showFrom = perPage * (pageNumber - 1);
+                var showTo = showFrom + perPage;
+                items.hide().slice(showFrom, showTo).show();
+            }
+        });
+    })    
+</script>
+</body>
+</html>
